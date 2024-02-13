@@ -579,14 +579,24 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"4pp4s":[function(require,module,exports) {
-/* eslint-disable max-len */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _redom = require("redom");
-var _jsDatepicker = require("js-datepicker");
-var _jsDatepickerDefault = parcelHelpers.interopDefault(_jsDatepicker);
-var _datepickerMinCss = require("js-datepicker/dist/datepicker.min.css");
-var _imask = require("imask");
-var _imaskDefault = parcelHelpers.interopDefault(_imask);
-const renderCard = ()=>{
+var _createJs = require("./create.js");
+var _validateJs = require("./validate.js");
+
+},{"./create.js":"44Gyy","./validate.js":"kedNO"}],"44Gyy":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.validationMessage = exports.inputCvv = exports.inputCardNumber = exports.formBtn = exports.cardHolder = void 0;
+var _redom = require("ed52386c87748039");
+var _jsDatepicker = _interopRequireDefault(require("ecefd8d2d08d3f19"));
+require("da279bd7029eff82");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+/* eslint-disable max-len */ const renderCard = ()=>{
     const text = (0, _redom.el)("p", {
         className: "secure"
     }, "Secure Checkout");
@@ -626,6 +636,9 @@ const renderCard = ()=>{
     const btn = (0, _redom.el)("button", {
         className: "form__button"
     }, "CHECK OUT");
+    const validationMessage = (0, _redom.el)("h2", {
+        className: "form__validation-message"
+    }, "");
     const form = (0, _redom.el)("form", {
         className: "form",
         action: "#",
@@ -635,7 +648,8 @@ const renderCard = ()=>{
         cardNumberForm,
         cardDateForm,
         cardCvv,
-        btn
+        btn,
+        validationMessage
     ]);
     const card = (0, _redom.el)("div", {
         className: "card"
@@ -649,27 +663,23 @@ const renderCard = ()=>{
     }, card);
 };
 (0, _redom.setChildren)(document.body, renderCard());
-const cardHolder = document.querySelector(".input__holder");
+const cardHolder = exports.cardHolder = document.querySelector(".input__holder");
 const cardName = document.querySelector(".card__name");
-const inputCvv = document.querySelector(".input__cvv");
-const inputCardNumber = document.querySelector(".input__number");
+const inputCvv = exports.inputCvv = document.querySelector(".input__cvv");
+const inputCardNumber = exports.inputCardNumber = document.querySelector(".input__number");
 const cardNumber = document.querySelector(".card__number");
 const inputCardDate = document.querySelector(".input__date");
 const cardDate = document.querySelector(".card__date");
+const formBtn = exports.formBtn = document.querySelector(".form__button");
+const validationMessage = exports.validationMessage = document.querySelector(".form__validation-message");
 const getCardData = (cardInput, cardOutput)=>{
     cardInput.addEventListener("input", ()=>{
         cardOutput.textContent = cardInput.value;
     });
 };
-new (0, _imaskDefault.default)(inputCardNumber, {
-    mask: "0000 0000 0000 0000"
-});
-new (0, _imaskDefault.default)(inputCvv, {
-    mask: "000"
-});
 getCardData(cardHolder, cardName);
 getCardData(inputCardNumber, cardNumber);
-(0, _jsDatepickerDefault.default)(".input__date", {
+(0, _jsDatepicker.default)(".input__date", {
     formatter: (input, date, instance)=>{
         const month = date.getMonth();
         const year = date.getFullYear();
@@ -685,7 +695,7 @@ getCardData(inputCardNumber, cardNumber);
 });
 getCardData(inputCardDate, cardDate);
 
-},{"redom":"gT5MM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","js-datepicker":"fwl1G","js-datepicker/dist/datepicker.min.css":"77cyx","imask":"aLznl"}],"gT5MM":[function(require,module,exports) {
+},{"ed52386c87748039":"gT5MM","ecefd8d2d08d3f19":"fwl1G","da279bd7029eff82":"77cyx"}],"gT5MM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "el", ()=>(0, _htmlJs.el));
@@ -724,7 +734,7 @@ var _svgJs = require("./svg.js");
 var _textJs = require("./text.js");
 var _viewFactoryJs = require("./view-factory.js");
 
-},{"./html.js":"hjTCY","./list.js":false,"./listpool.js":false,"./mount.js":false,"./unmount.js":false,"./place.js":false,"./router.js":false,"./setattr.js":false,"./setstyle.js":false,"./setchildren.js":"hM3Vg","./svg.js":false,"./text.js":false,"./view-factory.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hjTCY":[function(require,module,exports) {
+},{"./html.js":"hjTCY","./list.js":"89fOb","./listpool.js":"lwokh","./mount.js":"5qTJ0","./unmount.js":"irGDu","./place.js":"5mkoq","./router.js":"hnFD1","./setattr.js":"ljeoO","./setstyle.js":"5PSeC","./setchildren.js":"hM3Vg","./svg.js":"6md9d","./text.js":"9AiUK","./view-factory.js":"1IbtN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hjTCY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "html", ()=>html);
@@ -1043,7 +1053,55 @@ function text(str) {
     return document.createTextNode(str != null ? str : "");
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hM3Vg":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"89fOb":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "list", ()=>list);
+parcelHelpers.export(exports, "List", ()=>List);
+var _setchildrenJs = require("./setchildren.js");
+var _utilJs = require("./util.js");
+var _unmountJs = require("./unmount.js");
+var _listpoolJs = require("./listpool.js");
+function list(parent, View, key, initData) {
+    return new List(parent, View, key, initData);
+}
+class List {
+    constructor(parent, View, key, initData){
+        this.View = View;
+        this.initData = initData;
+        this.views = [];
+        this.pool = new (0, _listpoolJs.ListPool)(View, key, initData);
+        this.el = (0, _utilJs.ensureEl)(parent);
+        this.keySet = key != null;
+    }
+    update(data = [], context) {
+        const { keySet } = this;
+        const oldViews = this.views;
+        this.pool.update(data, context);
+        const { views, lookup } = this.pool;
+        if (keySet) for(let i = 0; i < oldViews.length; i++){
+            const oldView = oldViews[i];
+            const id = oldView.__redom_id;
+            if (lookup[id] == null) {
+                oldView.__redom_index = null;
+                (0, _unmountJs.unmount)(this, oldView);
+            }
+        }
+        for(let i = 0; i < views.length; i++){
+            const view = views[i];
+            view.__redom_index = i;
+        }
+        (0, _setchildrenJs.setChildren)(this, views);
+        if (keySet) this.lookup = lookup;
+        this.views = views;
+    }
+}
+List.extend = function extendList(parent, View, key, initData) {
+    return List.bind(List, parent, View, key, initData);
+};
+list.extend = List.extend;
+
+},{"./setchildren.js":"hM3Vg","./util.js":"84GoL","./unmount.js":"irGDu","./listpool.js":"lwokh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hM3Vg":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setChildren", ()=>setChildren);
@@ -1084,7 +1142,193 @@ function traverse(parent, children, _current) {
     return current;
 }
 
-},{"./mount.js":"5qTJ0","./unmount.js":"irGDu","./util.js":"84GoL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fwl1G":[function(require,module,exports) {
+},{"./mount.js":"5qTJ0","./unmount.js":"irGDu","./util.js":"84GoL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lwokh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "listPool", ()=>listPool);
+parcelHelpers.export(exports, "ListPool", ()=>ListPool);
+var _utilJs = require("./util.js");
+function listPool(View, key, initData) {
+    return new ListPool(View, key, initData);
+}
+class ListPool {
+    constructor(View, key, initData){
+        this.View = View;
+        this.initData = initData;
+        this.oldLookup = {};
+        this.lookup = {};
+        this.oldViews = [];
+        this.views = [];
+        if (key != null) this.key = typeof key === "function" ? key : propKey(key);
+    }
+    update(data, context) {
+        const { View, key, initData } = this;
+        const keySet = key != null;
+        const oldLookup = this.lookup;
+        const newLookup = {};
+        const newViews = Array(data.length);
+        const oldViews = this.views;
+        for(let i = 0; i < data.length; i++){
+            const item = data[i];
+            let view;
+            if (keySet) {
+                const id = key(item);
+                view = oldLookup[id] || new View(initData, item, i, data);
+                newLookup[id] = view;
+                view.__redom_id = id;
+            } else view = oldViews[i] || new View(initData, item, i, data);
+            view.update && view.update(item, i, data, context);
+            const el = (0, _utilJs.getEl)(view.el);
+            el.__redom_view = view;
+            newViews[i] = view;
+        }
+        this.oldViews = oldViews;
+        this.views = newViews;
+        this.oldLookup = oldLookup;
+        this.lookup = newLookup;
+    }
+}
+function propKey(key) {
+    return function(item) {
+        return item[key];
+    };
+}
+
+},{"./util.js":"84GoL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5mkoq":[function(require,module,exports) {
+/* global Node */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "place", ()=>place);
+parcelHelpers.export(exports, "Place", ()=>Place);
+var _textJs = require("./text.js");
+var _mountJs = require("./mount.js");
+var _unmountJs = require("./unmount.js");
+var _utilJs = require("./util.js");
+function place(View, initData) {
+    return new Place(View, initData);
+}
+class Place {
+    constructor(View, initData){
+        this.el = (0, _textJs.text)("");
+        this.visible = false;
+        this.view = null;
+        this._placeholder = this.el;
+        if (View instanceof Node) this._el = View;
+        else if (View.el instanceof Node) {
+            this._el = View;
+            this.view = View;
+        } else this._View = View;
+        this._initData = initData;
+    }
+    update(visible, data) {
+        const placeholder = this._placeholder;
+        const parentNode = this.el.parentNode;
+        if (visible) {
+            if (!this.visible) {
+                if (this._el) {
+                    (0, _mountJs.mount)(parentNode, this._el, placeholder);
+                    (0, _unmountJs.unmount)(parentNode, placeholder);
+                    this.el = (0, _utilJs.getEl)(this._el);
+                    this.visible = visible;
+                } else {
+                    const View = this._View;
+                    const view = new View(this._initData);
+                    this.el = (0, _utilJs.getEl)(view);
+                    this.view = view;
+                    (0, _mountJs.mount)(parentNode, view, placeholder);
+                    (0, _unmountJs.unmount)(parentNode, placeholder);
+                }
+            }
+            this.view && this.view.update && this.view.update(data);
+        } else if (this.visible) {
+            if (this._el) {
+                (0, _mountJs.mount)(parentNode, placeholder, this._el);
+                (0, _unmountJs.unmount)(parentNode, this._el);
+                this.el = placeholder;
+                this.visible = visible;
+                return;
+            }
+            (0, _mountJs.mount)(parentNode, placeholder, this.view);
+            (0, _unmountJs.unmount)(parentNode, this.view);
+            this.el = placeholder;
+            this.view = null;
+        }
+        this.visible = visible;
+    }
+}
+
+},{"./text.js":"9AiUK","./mount.js":"5qTJ0","./unmount.js":"irGDu","./util.js":"84GoL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hnFD1":[function(require,module,exports) {
+/* global Node */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "router", ()=>router);
+parcelHelpers.export(exports, "Router", ()=>Router);
+var _utilJs = require("./util.js");
+var _setchildrenJs = require("./setchildren.js");
+function router(parent, views, initData) {
+    return new Router(parent, views, initData);
+}
+class Router {
+    constructor(parent, views, initData){
+        this.el = (0, _utilJs.ensureEl)(parent);
+        this.views = views;
+        this.Views = views; // backwards compatibility
+        this.initData = initData;
+    }
+    update(route, data) {
+        if (route !== this.route) {
+            const views = this.views;
+            const View = views[route];
+            this.route = route;
+            if (View && (View instanceof Node || View.el instanceof Node)) this.view = View;
+            else this.view = View && new View(this.initData, data);
+            (0, _setchildrenJs.setChildren)(this.el, [
+                this.view
+            ]);
+        }
+        this.view && this.view.update && this.view.update(data, route);
+    }
+}
+
+},{"./util.js":"84GoL","./setchildren.js":"hM3Vg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6md9d":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "svg", ()=>svg);
+parcelHelpers.export(exports, "s", ()=>s);
+var _createElementJs = require("./create-element.js");
+var _utilJs = require("./util.js");
+const ns = "http://www.w3.org/2000/svg";
+function svg(query, ...args) {
+    let element;
+    const type = typeof query;
+    if (type === "string") element = (0, _createElementJs.createElement)(query, ns);
+    else if (type === "function") {
+        const Query = query;
+        element = new Query(...args);
+    } else throw new Error("At least one argument required");
+    (0, _utilJs.parseArgumentsInternal)((0, _utilJs.getEl)(element), args, true);
+    return element;
+}
+const s = svg;
+svg.extend = function extendSvg(...args) {
+    return svg.bind(this, ...args);
+};
+svg.ns = ns;
+
+},{"./create-element.js":"7ApSd","./util.js":"84GoL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1IbtN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "viewFactory", ()=>viewFactory);
+function viewFactory(views, key) {
+    if (!views || typeof views !== "object") throw new Error("views must be an object");
+    if (!key || typeof key !== "string") throw new Error("key must be a string");
+    return function(initData, item, i, data) {
+        const viewKey = item[key];
+        const View = views[viewKey];
+        if (View) return new View(initData, item, i, data);
+        else throw new Error(`view ${viewKey} not found`);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fwl1G":[function(require,module,exports) {
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -1617,7 +1861,61 @@ function traverse(parent, children, _current) {
     ]).default;
 });
 
-},{}],"77cyx":[function() {},{}],"aLznl":[function(require,module,exports) {
+},{}],"77cyx":[function() {},{}],"kedNO":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.isValidName = exports.isValidCardNumber = exports.isValidCVV = void 0;
+var _imask = _interopRequireDefault(require("35ea466f712617fd"));
+var _create = require("d037637ef6e0b353");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+new _imask.default(_create.inputCardNumber, {
+    mask: "0000 0000 0000 0000"
+});
+new _imask.default(_create.inputCvv, {
+    mask: "000"
+});
+const isValidName = (str)=>{
+    if (typeof str !== "string") return false;
+    const words = str.split(" ");
+    if (words.length !== 2) return false;
+    const latinLettersRegex = /^[a-zA-Z]+$/;
+    for (const word of words){
+        if (!latinLettersRegex.test(word)) return false;
+    }
+    return true;
+};
+exports.isValidName = isValidName;
+const isValidCardNumber = (cardNumber)=>{
+    const numRegex = /^[0-9]{16}$/;
+    if (!numRegex.test(cardNumber)) return false;
+    return true;
+};
+exports.isValidCardNumber = isValidCardNumber;
+const isValidCVV = (cvv)=>{
+    const numRegex = /^[0-9]{3}$/;
+    if (!numRegex.test(cvv)) return false;
+    return true;
+};
+exports.isValidCVV = isValidCVV;
+_create.formBtn.addEventListener("click", ()=>{
+    const validName = isValidName(_create.cardHolder.value);
+    const cardNumberValue = _create.inputCardNumber.value.replace(/\s/g, "");
+    const validCardNumber = isValidCardNumber(cardNumberValue);
+    const validCvv = isValidCVV(_create.inputCvv.value);
+    if (validName && validCardNumber && validCvv) _create.validationMessage.textContent = "\u0412\u0432\u0435\u0434\u0435\u043D\u044B \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0435 \u0434\u0430\u043D\u043D\u044B\u0435";
+    else _create.validationMessage.textContent = "\u0412\u0432\u0435\u0434\u0435\u043D\u044B \u043D\u0435 \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0435 \u0434\u0430\u043D\u043D\u044B\u0435";
+    setTimeout(()=>{
+        _create.validationMessage.textContent = "";
+    }, 2000);
+});
+
+},{"35ea466f712617fd":"aLznl","d037637ef6e0b353":"44Gyy"}],"aLznl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "InputMask", ()=>(0, _inputJsDefault.default));

@@ -149,6 +149,7 @@
 .input {
   letter-spacing: .15em;
   color: #52006a;
+  text-align: center;
   background: #f2ecec;
   border: none;
   border-radius: 10px;
@@ -180,29 +181,24 @@
 .form__button {
   color: #52006a;
   cursor: pointer;
-  background: #ffa900;
+  background: #efa3b6;
   border: none;
   border-radius: 10px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px 92px;
   font-size: 18px;
   line-height: 22px;
 }
 
-.input__holder {
-  padding: 19px 94px;
+.form__validation-message {
+  margin: 20px auto 0;
+  font-size: 18px;
+  line-height: 22px;
 }
 
-.input__number {
-  padding: 19px 58px;
-}
-
-.input__date {
-  padding: 19px 23px;
-}
-
-.input__cvv {
-  padding: 19px 33px;
+.input__holder, .input__number, .input__date, .input__cvv {
+  padding: 19px 20px;
 }
 
 .js-validate-error-label {

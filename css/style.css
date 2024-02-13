@@ -150,6 +150,7 @@
   line-height: 23px;
   letter-spacing: 0.15em;
   color: #52006A;
+  text-align: center;
 }
 
 .form__input-wrap_holder {
@@ -177,10 +178,11 @@
 }
 
 .form__button {
+  width: 100%;
   font-size: 18px;
   line-height: 22px;
   color: #52006A;
-  background: #FFA900;
+  background: #EFA3B6;
   border-radius: 10px;
   border: none;
   padding: 20px 92px;
@@ -188,20 +190,26 @@
   cursor: pointer;
 }
 
+.form__validation-message {
+  margin: 20px auto 0;
+  font-size: 18px;
+  line-height: 22px;
+}
+
 .input__holder {
-  padding: 19px 94px;
+  padding: 19px 20px;
 }
 
 .input__number {
-  padding: 19px 58px;
+  padding: 19px 20px;
 }
 
 .input__date {
-  padding: 19px 23px;
+  padding: 19px 20px;
 }
 
 .input__cvv {
-  padding: 19px 33px;
+  padding: 19px 20px;
 }
 
 .js-validate-error-label {
